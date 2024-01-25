@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill the Form</title>
+</head>
+<body>
+  <div class="container">
+    <form method="post">
+        <div class="form-content">
+          <label>Name</label>
+          <input type="text" class="form-control" placeholder="Enter your name" name="name">
+        </div>
+        <div class="form-content">
+          <label>Gender</label>
+          <input type="radio" id= "genmale" class="form-control" name="gender">
+          <label for="genmale">Male</label>
+          <input type="radio" id= "genfemale" class="form-control" name="gender">
+          <label for="genfemale">Female</label>
+        </div>
+        <div class="form-content">
+          <label>Email</label>
+          <input type="email" class="form-control" placeholder="Enter your email" name="email">
+        </div>
+        <div class="form-content">
+          <label for="dob">Date Of Birth</label>
+          <input type="date" id="dob" class="form-control" placeholder="dd/mm/yyyy" name="dob">
+        </div>
+        <div class="form-content">
+          <label>Upload file(Pdf,2 MB):</label>
+          <input type="file" class="form-control" accept=".pdf" name="file">
+        </div>
+        <div class="form-content">
+          <label>Enter Your Address:-</label><br>
+          <input type="text" class="form-control" name="address" placeholder="Enter your address">
+        </div>
+        <div class="form-content">
+          <label>Enter Your District:-</label><br>
+          <select name="district" id="district">
+            <option value="">Select Menu:</option>
+            <option value="visakhapatnam">Visakhapatnam</option>
+            <option value="west godavari">West Godavari</option>
+            <option value="guntur">Guntur</option>
+          </select>
+        </div>
+        <div class="form-content">
+          <label>Enter Your State:-</label><br>
+          <select name="state" id="district">
+            <option value="">Select Menu:</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Karnataka">Karnataka</option>
+          </select>
+        </div>
+        <div class="form-content">
+          <label for="country">Enter Your Country:</label>
+          <input type="text" name="country" id="country" class="form-control" placeholder="Enter your country">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+</body>
+</html>
