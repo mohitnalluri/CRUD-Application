@@ -47,8 +47,25 @@ db.query(sql,[id,name,gender,email,dob,file_path,address,district,state,country]
     res.status(200).send('Data submitted successfully');
 });
 });
+//test
+//data retrieval--getdata is endpoint
+app.get('/getdata', (req,res) => {
+    const sql = 'SELECT * FROM form_details';
+    db.query(sql,(err,result) => {
+        if(err){
+            console.error('Error retrieving data from database:',err);
+            res.status(500).send('Internal Server Error');
+        return;
+        }
 
+        // send retrieved data as json to the client
+        res.json(result); 
+    });
+});
+
+
+//start server
 app.listen(port, function () {
-    console.log('Server is running on port $port');
+    console.log(`Server is running on port ${port}`);
 });
 

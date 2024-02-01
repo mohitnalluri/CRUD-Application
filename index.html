@@ -7,16 +7,16 @@
 </head>
 <body>
   <div class="container">
-    <form method="post">
+    <form method="post" action="/submit">
         <div class="form-content">
           <label>Name</label>
           <input type="text" class="form-control" placeholder="Enter your name" name="name">
         </div>
         <div class="form-content">
           <label>Gender</label>
-          <input type="radio" id= "genmale" class="form-control" name="gender">
+          <input type="radio" id= "genmale" class="form-control" name="gender" value="Male">
           <label for="genmale">Male</label>
-          <input type="radio" id= "genfemale" class="form-control" name="gender">
+          <input type="radio" id= "genfemale" class="form-control" name="gender" value="Female">
           <label for="genfemale">Female</label>
         </div>
         <div class="form-content">
@@ -25,14 +25,14 @@
         </div>
         <div class="form-content">
           <label for="dob">Date Of Birth</label>
-          <input type="date" id="dob" class="form-control" placeholder="dd/mm/yyyy" name="dob">
+          <input type="date" id="dob" class="form-control" placeholder="dd-mm-yyyy" name="dob">
         </div>
         <div class="form-content">
           <label>Upload file(Pdf,2 MB):</label>
           <input type="file" class="form-control" accept=".pdf" name="file">
         </div>
         <div class="form-content">
-          <label>Enter Your Address:-</label><br>
+          <label>Address:</label><br>
           <input type="text" class="form-control" name="address" placeholder="Enter your address">
         </div>
         <div class="form-content">
@@ -61,5 +61,41 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
+    
+    <h2>Retrieve Data</h2>
+    <button id="FetchButton">Fetch Data</button>
+    <table id="dataTable">
+      <thead>
+      <td>ID</td>
+      <td>NAME</td>
+      <td>GENDER</td>
+      <td>EMAIL</td>
+      <td>DOB</td>
+      <td>FILES</td>
+      <td>ADDRESS</td>
+      <td>DISTRICT</td>
+      <td>STATE</td>
+      <td>COUNTRY</td>
+    </thead>
+    <tbody id="dataBody"></tbody>
+    </table>
+
+    <script>
+      function fetchdata() {
+        fetch('/getdata').then(res => res.json()).then(data => {
+          const dataBody = document.getElementById('dataBody');
+          dataBody.innerHTML='';
+
+          data.forEach(item => {
+                 const row=document.createElement('tr');
+                 row.innerHTML = `<td>${item.id}</td><td>${item.name}</td><td>${item.gender}</td><td>${item.email}</td><td>${item.dob}</td><td>${item.file_path}</td><td>${item.address}</td><td>${item.district}</td><td>${item.state}</td><td>${item.country}</td>`;
+                 //adds the row to the existing table
+                 dataBody.appendChild(row);      
+                });   
+          }).catch(error => console.error('Error Fetching Data:',error));
+        }
+      document.getElementById('FetchButton').addEventListener("click",fetchdata);
+      //fetchdata();
+    </script>
 </body>
 </html>
